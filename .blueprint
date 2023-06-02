@@ -1,0 +1,26 @@
+created:
+    - database/migrations/2020_09_03_151920_create_books_table.php
+    - database/migrations/2020_09_03_151921_create_categories_table.php
+    - database/migrations/2020_09_03_151922_create_authors_table.php
+    - database/migrations/2020_09_03_151922_create_book_category_table.php
+    - app/Book.php
+    - app/Category.php
+    - app/Author.php
+    - database/factories/BookFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/AuthorFactory.php
+    - app/Http/Controllers/BookController.php
+    - app/Http/Requests/BookStoreRequest.php
+    - app/Http/Requests/BookUpdateRequest.php
+    - resources/views/book/index.blade.php
+    - resources/views/book/create.blade.php
+    - resources/views/book/show.blade.php
+    - resources/views/book/edit.blade.php
+    - tests/Feature/Http/Controllers/BookControllerTest.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Book: { google_id: 'string unique', title: 'string:400', description: 'longtext nullable', published_at: 'date nullable', price: 'decimal:8,2', preview_link: 'string:200', author_id: 'id:author nullable', page_count: 'integer nullable', thumbnail: 'string:400', language: 'string:20', pdf: 'string:100 nullable', relationships: { belongsToMany: Category } }
+    Category: { name: 'string:200', relationships: { belongsToMany: Book } }
+    Author: { name: 'string:400', relationships: { hasMany: Book } }
